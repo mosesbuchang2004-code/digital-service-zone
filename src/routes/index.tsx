@@ -317,7 +317,8 @@ function Landing() {
           </div>
         </section>
 
-        {/* FAQ */}
+
+
 
         {/* Vendors & Partners */}
         <section id="vendors" className="mx-auto max-w-6xl px-4 pb-4 sm:px-6">
