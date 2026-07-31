@@ -247,8 +247,9 @@ function Landing() {
           />
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {services.map(({ name, desc, icon: Icon }) => (
-              <div
+              <Link
                 key={name}
+                to="/services"
                 className="group rounded-2xl border border-border bg-card p-5 transition-all hover:-translate-y-1 hover:border-primary/40 hover:shadow-soft"
               >
                 <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-secondary text-primary transition-colors group-hover:bg-gradient-brand group-hover:text-brand-foreground">
@@ -256,7 +257,7 @@ function Landing() {
                 </div>
                 <h3 className="mt-4 text-base font-semibold text-navy">{name}</h3>
                 <p className="mt-1 text-sm text-muted-foreground">{desc}</p>
-              </div>
+              </Link>
             ))}
           </div>
         </section>
