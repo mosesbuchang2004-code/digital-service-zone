@@ -19,6 +19,11 @@ import {
   Rocket,
   ChevronRight,
   Star,
+  Handshake,
+  Building2,
+  Percent,
+  Code2,
+  Store,
 } from "lucide-react";
 
 import logoAsset from "@/assets/hotsub-logo.asset.json";
@@ -321,8 +326,14 @@ function Landing() {
 
 
         {/* Vendors & Partners */}
-        <section id="vendors" className="mx-auto max-w-6xl px-4 pb-4 sm:px-6">
-          <div className="grid gap-5 lg:grid-cols-2">
+        <section id="vendors" className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
+          <SectionHeading
+            eyebrow="Vendors & Partners"
+            title="Grow your business on the HotSub network"
+            subtitle="Join hundreds of resellers, agents and fintech partners earning on every top-up."
+          />
+
+          <div className="mt-10 grid gap-5 lg:grid-cols-2">
             <div className="rounded-3xl border border-border bg-card p-7 shadow-soft">
               <p className="text-xs font-semibold uppercase tracking-widest text-primary">Vendors</p>
               <h3 className="mt-2 text-2xl font-bold text-navy">Become a HotSub vendor</h3>
@@ -351,6 +362,61 @@ function Landing() {
                 Meet our partners <ChevronRight className="h-4 w-4" />
               </Link>
             </div>
+          </div>
+
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              { name: "Wholesale Rates", desc: "Discounted pricing on every service, scaling with volume.", icon: Percent },
+              { name: "Instant Settlement", desc: "Commissions land in your wallet the moment an order completes.", icon: Wallet },
+              { name: "Developer API", desc: "REST endpoints and webhooks to resell from your own platform.", icon: Code2 },
+              { name: "Shop Dashboard", desc: "Track sales, staff and customers from one vendor console.", icon: Store },
+              { name: "Priority Support", desc: "Dedicated account manager on WhatsApp and phone.", icon: Rocket },
+              { name: "Verified & Secure", desc: "KYC-backed accounts with transaction PINs and audit logs.", icon: ShieldCheck },
+            ].map(({ name, desc, icon: Icon }) => (
+              <div
+                key={name}
+                className="group rounded-2xl border border-border bg-card p-5 transition-all hover:-translate-y-1 hover:border-primary/40 hover:shadow-soft"
+              >
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-secondary text-primary transition-colors group-hover:bg-gradient-brand group-hover:text-brand-foreground">
+                  <Icon className="h-5 w-5" />
+                </div>
+                <h3 className="mt-4 text-base font-semibold text-navy">{name}</h3>
+                <p className="mt-1 text-sm text-muted-foreground">{desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-16">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Partners</p>
+            <h3 className="mt-3 text-2xl font-extrabold tracking-tight text-navy sm:text-4xl">
+              The partners behind every instant delivery
+            </h3>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
+              We work with regulated payment processors, telcos and utility providers.
+            </p>
+            <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {[
+                { name: "Payment Partners", desc: "Paystack and Monnify power card funding, transfers and virtual accounts." },
+                { name: "Telco & Utility Partners", desc: "Direct integrations with MTN, Airtel, Glo, 9mobile, DisCos and cable providers." },
+                { name: "Agent Networks", desc: "Cyber cafés, POS agents and campus resellers earning on every top-up." },
+                { name: "Technology Partners", desc: "Fintechs and platforms embedding HotSub VTU services through our API." },
+              ].map((p) => (
+                <div key={p.name} className="rounded-2xl bg-secondary/60 p-6">
+                  <Building2 className="h-6 w-6 text-info" />
+                  <h4 className="mt-4 text-sm font-semibold text-navy">{p.name}</h4>
+                  <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{p.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-12 text-center">
+            <a
+              href="mailto:partners@hotsub.ng?subject=Vendor%20application"
+              className="inline-flex items-center gap-2 rounded-full bg-gradient-brand px-7 py-3.5 text-sm font-semibold text-brand-foreground shadow-glow transition-transform hover:scale-[1.02]"
+            >
+              <Handshake className="h-4 w-4" /> Apply to become a vendor
+            </a>
           </div>
         </section>
 
