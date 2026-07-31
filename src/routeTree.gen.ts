@@ -14,9 +14,12 @@ import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as VendorsRouteImport } from './routes/vendors'
+import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
+import { Route as AuthenticatedProfileRouteImport } from './routes/_authenticated/profile'
 import { Route as AuthenticatedServicesRouteImport } from './routes/_authenticated/services'
 import { Route as AuthenticatedTransactionsRouteImport } from './routes/_authenticated/transactions'
+import { Route as AuthenticatedVendorRouteImport } from './routes/_authenticated/vendor'
 import { Route as AuthenticatedWalletRouteImport } from './routes/_authenticated/wallet'
 import { Route as AuthenticatedBuySlugRouteImport } from './routes/_authenticated/buy.$slug'
 
@@ -44,9 +47,19 @@ const VendorsRoute = VendorsRouteImport.update({
   path: '/vendors',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedProfileRoute = AuthenticatedProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedServicesRoute = AuthenticatedServicesRouteImport.update({
@@ -60,6 +73,11 @@ const AuthenticatedTransactionsRoute =
     path: '/transactions',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedVendorRoute = AuthenticatedVendorRouteImport.update({
+  id: '/vendor',
+  path: '/vendor',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedWalletRoute = AuthenticatedWalletRouteImport.update({
   id: '/wallet',
   path: '/wallet',
@@ -76,9 +94,12 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/reset-password': typeof ResetPasswordRoute
   '/vendors': typeof VendorsRoute
+  '/admin': typeof AuthenticatedAdminRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/profile': typeof AuthenticatedProfileRoute
   '/services': typeof AuthenticatedServicesRoute
   '/transactions': typeof AuthenticatedTransactionsRoute
+  '/vendor': typeof AuthenticatedVendorRoute
   '/wallet': typeof AuthenticatedWalletRoute
   '/buy/$slug': typeof AuthenticatedBuySlugRoute
 }
@@ -87,9 +108,12 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/reset-password': typeof ResetPasswordRoute
   '/vendors': typeof VendorsRoute
+  '/admin': typeof AuthenticatedAdminRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/profile': typeof AuthenticatedProfileRoute
   '/services': typeof AuthenticatedServicesRoute
   '/transactions': typeof AuthenticatedTransactionsRoute
+  '/vendor': typeof AuthenticatedVendorRoute
   '/wallet': typeof AuthenticatedWalletRoute
   '/buy/$slug': typeof AuthenticatedBuySlugRoute
 }
@@ -100,9 +124,12 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/reset-password': typeof ResetPasswordRoute
   '/vendors': typeof VendorsRoute
+  '/_authenticated/admin': typeof AuthenticatedAdminRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
+  '/_authenticated/profile': typeof AuthenticatedProfileRoute
   '/_authenticated/services': typeof AuthenticatedServicesRoute
   '/_authenticated/transactions': typeof AuthenticatedTransactionsRoute
+  '/_authenticated/vendor': typeof AuthenticatedVendorRoute
   '/_authenticated/wallet': typeof AuthenticatedWalletRoute
   '/_authenticated/buy/$slug': typeof AuthenticatedBuySlugRoute
 }
@@ -113,9 +140,12 @@ export interface FileRouteTypes {
     | '/auth'
     | '/reset-password'
     | '/vendors'
+    | '/admin'
     | '/dashboard'
+    | '/profile'
     | '/services'
     | '/transactions'
+    | '/vendor'
     | '/wallet'
     | '/buy/$slug'
   fileRoutesByTo: FileRoutesByTo
@@ -124,9 +154,12 @@ export interface FileRouteTypes {
     | '/auth'
     | '/reset-password'
     | '/vendors'
+    | '/admin'
     | '/dashboard'
+    | '/profile'
     | '/services'
     | '/transactions'
+    | '/vendor'
     | '/wallet'
     | '/buy/$slug'
   id:
@@ -136,9 +169,12 @@ export interface FileRouteTypes {
     | '/auth'
     | '/reset-password'
     | '/vendors'
+    | '/_authenticated/admin'
     | '/_authenticated/dashboard'
+    | '/_authenticated/profile'
     | '/_authenticated/services'
     | '/_authenticated/transactions'
+    | '/_authenticated/vendor'
     | '/_authenticated/wallet'
     | '/_authenticated/buy/$slug'
   fileRoutesById: FileRoutesById
@@ -188,11 +224,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof VendorsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/admin': {
+      id: '/_authenticated/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AuthenticatedAdminRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/dashboard': {
       id: '/_authenticated/dashboard'
       path: '/dashboard'
       fullPath: '/dashboard'
       preLoaderRoute: typeof AuthenticatedDashboardRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/profile': {
+      id: '/_authenticated/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof AuthenticatedProfileRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/services': {
@@ -207,6 +257,13 @@ declare module '@tanstack/react-router' {
       path: '/transactions'
       fullPath: '/transactions'
       preLoaderRoute: typeof AuthenticatedTransactionsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/vendor': {
+      id: '/_authenticated/vendor'
+      path: '/vendor'
+      fullPath: '/vendor'
+      preLoaderRoute: typeof AuthenticatedVendorRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/wallet': {
@@ -227,17 +284,23 @@ declare module '@tanstack/react-router' {
 }
 
 interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAdminRoute: typeof AuthenticatedAdminRoute
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
+  AuthenticatedProfileRoute: typeof AuthenticatedProfileRoute
   AuthenticatedServicesRoute: typeof AuthenticatedServicesRoute
   AuthenticatedTransactionsRoute: typeof AuthenticatedTransactionsRoute
+  AuthenticatedVendorRoute: typeof AuthenticatedVendorRoute
   AuthenticatedWalletRoute: typeof AuthenticatedWalletRoute
   AuthenticatedBuySlugRoute: typeof AuthenticatedBuySlugRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAdminRoute: AuthenticatedAdminRoute,
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
+  AuthenticatedProfileRoute: AuthenticatedProfileRoute,
   AuthenticatedServicesRoute: AuthenticatedServicesRoute,
   AuthenticatedTransactionsRoute: AuthenticatedTransactionsRoute,
+  AuthenticatedVendorRoute: AuthenticatedVendorRoute,
   AuthenticatedWalletRoute: AuthenticatedWalletRoute,
   AuthenticatedBuySlugRoute: AuthenticatedBuySlugRoute,
 }

@@ -155,19 +155,19 @@ function Landing() {
             >
               Vendors
             </Link>
-            <a
-              href="#get-started"
+            <Link
+              to="/auth"
               className="hidden rounded-full px-3 py-2 text-sm font-medium text-white/80 transition-colors hover:text-white sm:inline-flex"
             >
               Login
-            </a>
+            </Link>
 
-            <a
-              href="#get-started"
+            <Link
+              to="/auth"
               className="rounded-full bg-gradient-brand px-4 py-2 text-sm font-semibold text-brand-foreground shadow-glow transition-transform hover:scale-[1.03]"
             >
               Sign up
-            </a>
+            </Link>
           </nav>
         </div>
       </header>
@@ -194,18 +194,18 @@ function Landing() {
                 instantly from anywhere in Nigeria.
               </p>
               <div id="get-started" className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <a
-                  href="#services"
+                <Link
+                  to="/auth"
                   className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-brand px-6 py-3.5 text-sm font-semibold text-brand-foreground shadow-glow transition-transform hover:scale-[1.02]"
                 >
                   Create Free Account <ChevronRight className="h-4 w-4" />
-                </a>
-                <a
-                  href="#services"
+                </Link>
+                <Link
+                  to="/auth"
                   className="inline-flex items-center justify-center rounded-full border border-white/25 px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white/10"
                 >
                   Login
-                </a>
+                </Link>
               </div>
               <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-white/55">
                 <span>Paystack &amp; Monnify funding</span>
