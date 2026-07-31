@@ -318,7 +318,44 @@ function Landing() {
         </section>
 
         {/* FAQ */}
+
+        {/* Vendors & Partners */}
+        <section id="vendors" className="mx-auto max-w-6xl px-4 pb-4 sm:px-6">
+          <div className="grid gap-5 lg:grid-cols-2">
+            <div className="rounded-3xl border border-border bg-card p-7 shadow-soft">
+              <p className="text-xs font-semibold uppercase tracking-widest text-primary">Vendors</p>
+              <h3 className="mt-2 text-2xl font-bold text-navy">Become a HotSub vendor</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                Resell airtime, data, cable TV, electricity and exam PINs at wholesale rates. Get an
+                agent dashboard, instant wallet funding and developer APIs to power your own store.
+              </p>
+              <Link
+                to="/vendors"
+                className="mt-6 inline-flex items-center gap-2 rounded-full bg-gradient-brand px-5 py-2.5 text-sm font-semibold text-brand-foreground shadow-glow"
+              >
+                Explore vendor program <ChevronRight className="h-4 w-4" />
+              </Link>
+            </div>
+            <div className="rounded-3xl border border-border bg-secondary/60 p-7">
+              <p className="text-xs font-semibold uppercase tracking-widest text-primary">Partners</p>
+              <h3 className="mt-2 text-2xl font-bold text-navy">Built on trusted networks</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                We connect directly to Nigeria's major telcos, disco billers and cable providers,
+                with secure payments handled by licensed processors — so every transaction settles fast.
+              </p>
+              <Link
+                to="/vendors"
+                className="mt-6 inline-flex items-center gap-2 rounded-full border border-navy/15 bg-card px-5 py-2.5 text-sm font-semibold text-navy"
+              >
+                Meet our partners <ChevronRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ */}
         <section id="faq" className="bg-secondary/60 py-16 lg:py-24">
+
           <div className="mx-auto max-w-3xl px-4 sm:px-6">
             <SectionHeading
               eyebrow="FAQ"
