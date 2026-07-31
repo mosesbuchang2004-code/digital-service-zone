@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   Smartphone,
   Wifi,
@@ -129,16 +129,19 @@ function Landing() {
       <header className="sticky top-0 z-50 border-b border-white/10 bg-navy/95 backdrop-blur">
         <div className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 py-3 sm:px-6">
           <a href="#top" className="flex min-w-0 items-center">
-            <img
-              src={logoAsset.url}
-              alt="HotSub — subscriptions made easy"
-              className="h-9 w-auto rounded-md sm:h-11"
-            />
+            <span className="inline-flex items-center rounded-xl bg-white px-2.5 py-1.5 shadow-soft">
+              <img
+                src={logoAsset.url}
+                alt="HotSub — subscriptions made easy"
+                className="h-8 w-auto sm:h-10"
+              />
+            </span>
           </a>
           <nav className="flex shrink-0 items-center gap-2 sm:gap-6">
             <div className="hidden items-center gap-6 text-sm text-white/70 md:flex">
               <a className="transition-colors hover:text-white" href="#services">Services</a>
               <a className="transition-colors hover:text-white" href="#why">Why HotSub</a>
+              <Link className="transition-colors hover:text-white" to="/vendors">Vendors</Link>
               <a className="transition-colors hover:text-white" href="#faq">FAQ</a>
             </div>
             <a
@@ -363,6 +366,7 @@ function Landing() {
               </p>
             </div>
             <FooterCol title="Company" links={["About", "Blog", "Contact"]} />
+
             <FooterCol title="Legal" links={["Privacy Policy", "Terms of Service", "Refund Policy"]} />
             <FooterCol title="Social" links={["X (Twitter)", "Instagram", "Facebook", "WhatsApp"]} />
           </div>
