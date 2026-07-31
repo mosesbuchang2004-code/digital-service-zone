@@ -144,12 +144,19 @@ function Landing() {
               <Link className="transition-colors hover:text-white" to="/vendors">Vendors</Link>
               <a className="transition-colors hover:text-white" href="#faq">FAQ</a>
             </div>
+            <Link
+              to="/vendors"
+              className="rounded-full border border-white/20 px-3 py-2 text-xs font-medium text-white/85 transition-colors hover:text-white md:hidden"
+            >
+              Vendors
+            </Link>
             <a
               href="#get-started"
-              className="rounded-full px-3 py-2 text-sm font-medium text-white/80 transition-colors hover:text-white"
+              className="hidden rounded-full px-3 py-2 text-sm font-medium text-white/80 transition-colors hover:text-white sm:inline-flex"
             >
               Login
             </a>
+
             <a
               href="#get-started"
               className="rounded-full bg-gradient-brand px-4 py-2 text-sm font-semibold text-brand-foreground shadow-glow transition-transform hover:scale-[1.03]"
