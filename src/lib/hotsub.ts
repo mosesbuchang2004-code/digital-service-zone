@@ -136,8 +136,8 @@ export const allVendorApplicationsQuery = queryOptions({
 
 export async function bootstrapAccount(fullName?: string, phone?: string) {
   const { error } = await supabase.rpc("bootstrap_account", {
-    p_full_name: fullName ?? null,
-    p_phone: phone ?? null,
+    p_full_name: fullName,
+    p_phone: phone,
   });
   if (error) throw error;
 }
