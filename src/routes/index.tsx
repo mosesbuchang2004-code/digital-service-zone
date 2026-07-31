@@ -366,6 +366,7 @@ function Landing() {
               </p>
             </div>
             <FooterCol title="Company" links={["About", "Blog", "Contact"]} />
+
             <FooterCol title="Legal" links={["Privacy Policy", "Terms of Service", "Refund Policy"]} />
             <FooterCol title="Social" links={["X (Twitter)", "Instagram", "Facebook", "WhatsApp"]} />
           </div>
