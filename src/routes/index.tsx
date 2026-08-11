@@ -416,7 +416,7 @@ function Landing() {
 
           <div className="mt-12 text-center">
             <a
-              href="mailto:partners@hotsub.ng?subject=Vendor%20application"
+              href="mailto:hotsubservice@gmail.com?subject=Vendor%20application"
               className="inline-flex items-center gap-2 rounded-full bg-gradient-brand px-7 py-3.5 text-sm font-semibold text-brand-foreground shadow-glow transition-transform hover:scale-[1.02]"
             >
               <Handshake className="h-4 w-4" /> Apply to become a vendor
