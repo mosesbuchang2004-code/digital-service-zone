@@ -24,6 +24,9 @@ import {
   Percent,
   Code2,
   Store,
+  Mail,
+  Phone,
+  MapPin,
 } from "lucide-react";
 
 import logoAsset from "@/assets/hotsub-logo.asset.json";
@@ -413,7 +416,7 @@ function Landing() {
 
           <div className="mt-12 text-center">
             <a
-              href="mailto:partners@hotsub.ng?subject=Vendor%20application"
+              href="mailto:hotsubservice@gmail.com?subject=Vendor%20application"
               className="inline-flex items-center gap-2 rounded-full bg-gradient-brand px-7 py-3.5 text-sm font-semibold text-brand-foreground shadow-glow transition-transform hover:scale-[1.02]"
             >
               <Handshake className="h-4 w-4" /> Apply to become a vendor
@@ -469,7 +472,7 @@ function Landing() {
 
       <footer className="bg-gradient-navy pt-14">
         <div className="mx-auto max-w-6xl px-4 pb-10 sm:px-6">
-          <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+          <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1.4fr]">
             <div>
               <img src={logoAsset.url} alt="HotSub" className="h-10 w-auto rounded-md" />
               <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/60">
@@ -478,9 +481,36 @@ function Landing() {
               </p>
             </div>
             <FooterCol title="Company" links={["About", "Blog", "Contact"]} />
-
             <FooterCol title="Legal" links={["Privacy Policy", "Terms of Service", "Refund Policy"]} />
-            <FooterCol title="Social" links={["X (Twitter)", "Instagram", "Facebook", "WhatsApp"]} />
+            <div>
+              <h3 className="text-sm font-semibold text-white">Contact us</h3>
+              <ul className="mt-4 space-y-3 text-sm text-white/60">
+                <li>
+                  <a
+                    href="mailto:hotsubservice@gmail.com"
+                    className="flex items-start gap-2 transition-colors hover:text-primary"
+                  >
+                    <Mail className="mt-0.5 h-4 w-4 shrink-0" />
+                    <span>hotsubservice@gmail.com</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="tel:+2348062163308"
+                    className="flex items-start gap-2 transition-colors hover:text-primary"
+                  >
+                    <Phone className="mt-0.5 h-4 w-4 shrink-0" />
+                    <span>08062163308</span>
+                  </a>
+                </li>
+                <li>
+                  <span className="flex items-start gap-2">
+                    <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                    <span>57, Eweka, off Upper Lawani Road, New Benin, Benin City, Edo State, Nigeria</span>
+                  </span>
+                </li>
+              </ul>
+            </div>
           </div>
           <div className="mt-10 flex flex-col gap-2 border-t border-white/10 pt-6 text-xs text-white/50 sm:flex-row sm:items-center sm:justify-between">
             <p>© {new Date().getFullYear()} HotSub. All rights reserved.</p>
