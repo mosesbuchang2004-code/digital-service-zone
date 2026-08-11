@@ -24,6 +24,9 @@ import {
   Percent,
   Code2,
   Store,
+  Mail,
+  Phone,
+  MapPin,
 } from "lucide-react";
 
 import logoAsset from "@/assets/hotsub-logo.asset.json";

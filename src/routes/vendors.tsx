@@ -9,6 +9,9 @@ import {
   Store,
   Code2,
   ChevronRight,
+  Mail,
+  Phone,
+  MapPin,
 } from "lucide-react";
 
 import logoAsset from "@/assets/hotsub-logo.asset.json";
