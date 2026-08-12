@@ -235,19 +235,133 @@ export type Database = {
         }
         Relationships: []
       }
+      vtu_transactions: {
+        Row: {
+          amount: number
+          created_at: string
+          error_message: string | null
+          id: string
+          metadata: Json
+          network: string | null
+          phone_number: string | null
+          plan_id: string | null
+          provider_reference: string | null
+          reference: string
+          service_slug: string | null
+          service_type: Database["public"]["Enums"]["vtu_service_type"]
+          status: Database["public"]["Enums"]["vtu_status"]
+          token: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          amount: number
+          created_at?: string
+          error_message?: string | null
+          id?: string
+          metadata?: Json
+          network?: string | null
+          phone_number?: string | null
+          plan_id?: string | null
+          provider_reference?: string | null
+          reference: string
+          service_slug?: string | null
+          service_type: Database["public"]["Enums"]["vtu_service_type"]
+          status?: Database["public"]["Enums"]["vtu_status"]
+          token?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          error_message?: string | null
+          id?: string
+          metadata?: Json
+          network?: string | null
+          phone_number?: string | null
+          plan_id?: string | null
+          provider_reference?: string | null
+          reference?: string
+          service_slug?: string | null
+          service_type?: Database["public"]["Enums"]["vtu_service_type"]
+          status?: Database["public"]["Enums"]["vtu_status"]
+          token?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      wallet_transactions: {
+        Row: {
+          amount: number
+          balance_after: number | null
+          balance_before: number | null
+          created_at: string
+          currency: string
+          description: string | null
+          id: string
+          metadata: Json
+          provider_reference: string | null
+          reference: string
+          status: Database["public"]["Enums"]["vtu_status"]
+          type: Database["public"]["Enums"]["ledger_type"]
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          amount: number
+          balance_after?: number | null
+          balance_before?: number | null
+          created_at?: string
+          currency?: string
+          description?: string | null
+          id?: string
+          metadata?: Json
+          provider_reference?: string | null
+          reference: string
+          status?: Database["public"]["Enums"]["vtu_status"]
+          type: Database["public"]["Enums"]["ledger_type"]
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          balance_after?: number | null
+          balance_before?: number | null
+          created_at?: string
+          currency?: string
+          description?: string | null
+          id?: string
+          metadata?: Json
+          provider_reference?: string | null
+          reference?: string
+          status?: Database["public"]["Enums"]["vtu_status"]
+          type?: Database["public"]["Enums"]["ledger_type"]
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       wallets: {
         Row: {
           balance: number
+          created_at: string
+          currency: string
           updated_at: string
           user_id: string
         }
         Insert: {
           balance?: number
+          created_at?: string
+          currency?: string
           updated_at?: string
           user_id: string
         }
         Update: {
           balance?: number
+          created_at?: string
+          currency?: string
           updated_at?: string
           user_id?: string
         }
@@ -258,9 +372,80 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      begin_vtu_transaction: {
+        Args: {
+          p_amount: number
+          p_metadata?: Json
+          p_network?: string
+          p_phone_number?: string
+          p_plan_id?: string
+          p_reference: string
+          p_service_slug?: string
+          p_service_type: Database["public"]["Enums"]["vtu_service_type"]
+          p_user_id: string
+        }
+        Returns: {
+          amount: number
+          created_at: string
+          error_message: string | null
+          id: string
+          metadata: Json
+          network: string | null
+          phone_number: string | null
+          plan_id: string | null
+          provider_reference: string | null
+          reference: string
+          service_slug: string | null
+          service_type: Database["public"]["Enums"]["vtu_service_type"]
+          status: Database["public"]["Enums"]["vtu_status"]
+          token: string | null
+          updated_at: string
+          user_id: string
+        }
+        SetofOptions: {
+          from: "*"
+          to: "vtu_transactions"
+          isOneToOne: true
+          isSetofReturn: false
+        }
+      }
       bootstrap_account: {
         Args: { p_full_name?: string; p_phone?: string }
         Returns: undefined
+      }
+      finalize_vtu_transaction: {
+        Args: {
+          p_error_message?: string
+          p_metadata?: Json
+          p_provider_reference?: string
+          p_reference: string
+          p_status: Database["public"]["Enums"]["vtu_status"]
+          p_token?: string
+        }
+        Returns: {
+          amount: number
+          created_at: string
+          error_message: string | null
+          id: string
+          metadata: Json
+          network: string | null
+          phone_number: string | null
+          plan_id: string | null
+          provider_reference: string | null
+          reference: string
+          service_slug: string | null
+          service_type: Database["public"]["Enums"]["vtu_service_type"]
+          status: Database["public"]["Enums"]["vtu_status"]
+          token: string | null
+          updated_at: string
+          user_id: string
+        }
+        SetofOptions: {
+          from: "*"
+          to: "vtu_transactions"
+          isOneToOne: true
+          isSetofReturn: false
+        }
       }
       fund_wallet: {
         Args: { p_amount: number }
@@ -323,8 +508,16 @@ export type Database = {
     }
     Enums: {
       app_role: "user" | "vendor" | "admin"
+      ledger_type: "funding" | "purchase" | "refund" | "reversal" | "adjustment"
       txn_status: "pending" | "success" | "failed" | "reversed"
       txn_type: "funding" | "purchase" | "commission" | "reversal"
+      vtu_service_type: "airtime" | "data" | "electricity" | "cable" | "exam"
+      vtu_status:
+        | "pending"
+        | "processing"
+        | "successful"
+        | "failed"
+        | "refunded"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -453,8 +646,11 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["user", "vendor", "admin"],
+      ledger_type: ["funding", "purchase", "refund", "reversal", "adjustment"],
       txn_status: ["pending", "success", "failed", "reversed"],
       txn_type: ["funding", "purchase", "commission", "reversal"],
+      vtu_service_type: ["airtime", "data", "electricity", "cable", "exam"],
+      vtu_status: ["pending", "processing", "successful", "failed", "refunded"],
     },
   },
 } as const
