@@ -1,6 +1,6 @@
 meta: plan
   ? {
-      plan: plan.name,
+      plan: plan.plan_name,
       validity: plan.validity,
       provider_code: plan.provider_code,
       package_code: plan.package_code,
